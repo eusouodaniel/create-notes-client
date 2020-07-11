@@ -1,10 +1,10 @@
 import React from 'react';
 import "./App.scss";
-import Header from "./components/header";
+import Home from "./screens/home";
 
 const App = () => (
     <div>
-        <Header />
+        <Home />
     </div>
 )
 
