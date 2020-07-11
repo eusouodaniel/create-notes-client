@@ -1,27 +1,28 @@
 import React, { Fragment, useState } from 'react';
-import { Button, Field, Control, Input, Column, Label, Help } from "rbx";
+import { Button, Field, Control, Input, Column, Help, Label } from "rbx";
 import UserService from '../../../services/users';
 import { Redirect } from "react-router-dom";
 
-function RegisterForm() {
-    const [name, setName] = useState("");
+function LoginForm() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [redirectToLogin, setRedirectToLogin] = useState(false);
+    const [RedirectToRegister, setRedirectToRegister] = useState(false);
+    const [RedirectToNotes, setRedirectToNotes] = useState(false);
     const [error, setError] = useState(false);
 
-    if(redirectToLogin == true)
-        return <Redirect to={{pathname: "/login"}}/>
+    if(RedirectToRegister == true)
+        return <Redirect to={{pathname: "/register"}}/>
+    else if(RedirectToNotes == true)
+        return <Redirect to={{pathname: "/notes"}}/>
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+  
         try {
-            const user = await UserService.register({ name: name, email: email, password: password });
-            console.log(user);
-            setRedirectToLogin(true);
+            await UserService.login({email: email,password: password});
+            setRedirectToNotes(true);
         } catch (error) {
-            setError(true);
+            setError(true)
         }
     }
 
@@ -30,18 +31,6 @@ function RegisterForm() {
             <Column.Group centered>
                 <form onSubmit={handleSubmit}>
                     <Column size={12}>
-                        <Field>
-                            <Label size="small">Nome:</Label>
-                            <Control>
-                                <Input 
-                                    type="name" 
-                                    value={name}
-                                    onChange={e => setName(e.target.value)}
-                                    required
-                                    name="name"
-                                />
-                            </Control>
-                        </Field>
                         <Field>
                             <Label size="small">Email:</Label>
                             <Control>
@@ -70,15 +59,15 @@ function RegisterForm() {
                             <Control>
                                 <Column.Group>
                                     <Column>
-                                        <a onClick={e => setRedirectToLogin(true)} className="button is-white has-text-custom-purple">Login</a>
+                                        <a onClick={e => setRedirectToRegister(true)} className="button is-white has-text-custom-purple">Cadastre-se </a>
                                     </Column>
                                     <Column>
-                                        <Button color="custom-purple" outlined>Cadastrar</Button>
+                                        <Button color="custom-purple" outlined>Login</Button>
                                     </Column>
                                 </Column.Group>
                             </Control>
                         </Field>
-                        { error && <Help color="danger">Email ou senhas inválidos</Help> }
+                        { error && <Help color="danger">Email ou senha inválido</Help> }
                     </Column>
                 </form>
             </Column.Group>
@@ -86,4 +75,4 @@ function RegisterForm() {
     )
 }
 
-export default RegisterForm;
+export default LoginForm;
