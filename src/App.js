@@ -1,10 +1,10 @@
 import React from 'react';
 import "./App.scss";
-import Home from "./screens/home";
+import Routes from "./routes";
 
 const App = () => (
     <div>
-        <Home />
+        <Routes />
     </div>
 )
 

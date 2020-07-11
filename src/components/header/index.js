@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
-import { Navbar, Container } from 'rbx';
+import { Navbar, Container, Column } from 'rbx';
 import LogoImage from '../../assets/images/logo.png';
+import { Link } from 'react-router-dom';
 import "../../styles/header.scss";
 
 function Header(){
+    const [openMenu, setOpenMenu] = useState(false)
     return(
         <Navbar>
             <Container>
                 <Navbar.Brand>
-                    <img src={LogoImage} />
+                    <Link to="/">
+                        <img src={LogoImage} />
+                    </Link>
                     <Navbar.Burger
                         className="nav-burger burger"
                         arial-label="menu"
@@ -21,7 +25,14 @@ function Header(){
                 </Navbar.Brand>
                 <Navbar.Menu id="navbar-menu">
                     <Navbar.Segment as="div" className="navbar-item navbar-end" align="right">
-                        Item 1
+                        <Column.Group>
+                            <Column>
+                                <Link to="/register" className="button is-white has-text-custom-purple">Cadastro</Link>
+                            </Column>
+                            <Column>
+                                <Link to="/login" className="button is-outlined is-custom-purple">Entrar</Link>
+                            </Column>
+                        </Column.Group>
                     </Navbar.Segment>
                 </Navbar.Menu>
             </Container>

@@ -21,7 +21,7 @@ const Home = () => (
             </Title>
             <BrowserRouter>
                 <Link to='/register' className="button is-outlined is-white is-large">
-                <strong>Cadastre-se agora</strong>
+                  <strong>Cadastre-se agora</strong>
                 </Link>
             </BrowserRouter>
           </Column>
