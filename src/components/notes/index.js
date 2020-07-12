@@ -5,6 +5,7 @@ import { push as Menu } from 'react-burger-menu'
 import List from "../notes/list";
 import NoteService from '../../services/notes';
 import Editor from "../notes/editor";
+import Search from "../notes/search";
 
 function Notes(props) {
 	const [notes, setNotes] = useState([]);
@@ -27,6 +28,12 @@ function Notes(props) {
 	const createNote = async (params) => {
 		await NoteService.create();
 		fetchNotes();
+	}
+
+	const searchNotes = async (query) => {
+		console.log(query);
+		const response = await NoteService.search(query);
+		setNotes(response.data);
 	}
 
 	const updateNote = async (oldNote, params) => {
@@ -62,6 +69,11 @@ function Notes(props) {
 					customBurgerIcon={ false }
 					customCrossIcon={ false }
 				>
+				<Column.Group>
+					<Column size={10} offset={1}>
+						<Search searchNotes={searchNotes} fetchNotes={fetchNotes} />
+					</Column>
+				</Column.Group>
 				<List
 					notes={notes}
 					selectNote={selectNote}

@@ -10,7 +10,7 @@ function ListNotes(props) {
             <Column.Group breakpoint="mobile">
                 <Column size={6} offset={1}>
                     <Title size={6}>
-                        { props.notes.length } notas
+                        { props.notes.length } { props.notes.length > 1 ? "notas" : "nota"}
                     </Title>
                 </Column>
                 <Column size={2}>

@@ -13,6 +13,9 @@ const NoteService = {
     delete: (id) => Api.delete(`/notes/${id}`, {
         headers: {'access-token': localStorage.getItem('token')}
     }),
+    search: (query) => Api.get(`/notes/search?query=${query}`, {
+        headers: {'access-token': localStorage.getItem('token')}
+    }),
 }
 
 export default NoteService;
