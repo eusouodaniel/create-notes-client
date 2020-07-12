@@ -18,7 +18,7 @@ function RegisterForm() {
 
         try {
             const user = await UserService.register({ name: name, email: email, password: password });
-            console.log(user);
+            
             setRedirectToLogin(true);
         } catch (error) {
             setError(true);
