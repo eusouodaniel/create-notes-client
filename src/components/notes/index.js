@@ -22,12 +22,12 @@ function Notes(props) {
 	}
 
 	const createNote = async (params) => {
-		const note = await NoteService.create();
+		await NoteService.create();
 		fetchNotes();
 	}
 
-	const deleteNote = async (params) => {
-		const note = await NoteService.deletes();
+	const deleteNote = async (note) => {
+		await NoteService.delete(note._id);
 		fetchNotes();
 	}
   
@@ -54,10 +54,11 @@ function Notes(props) {
 					notes={notes}
 					selectNote={selectNote}
 					createNote={createNote}
+					deleteNote={deleteNote}
 					current_note={current_note} />
 				</Menu>
 				<Column size={12} className="notes-editor" id="notes-editor">
-					Editor...
+				
 				</Column>
 			</div>
 		</Fragment>
