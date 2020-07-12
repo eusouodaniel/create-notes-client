@@ -4,6 +4,7 @@ import "../../styles/notes.scss";
 import { push as Menu } from 'react-burger-menu'
 import List from "../notes/list";
 import NoteService from '../../services/notes';
+import Editor from "../notes/editor";
 
 function Notes(props) {
 	const [notes, setNotes] = useState([]);
@@ -60,7 +61,9 @@ function Notes(props) {
 					current_note={current_note} />
 				</Menu>
 				<Column size={12} className="notes-editor" id="notes-editor">
-
+					<Editor
+						note={current_note}
+					/>
 				</Column>
 			</div>
 		</Fragment>
