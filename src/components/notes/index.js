@@ -18,6 +18,8 @@ function Notes(props) {
 		if (response.data.length >= 1) {
 			setNotes(response.data.reverse())
 			setCurrentNote(response.data[0])
+		} else {
+			setNotes([]);
 		}
 	}
 
@@ -58,7 +60,7 @@ function Notes(props) {
 					current_note={current_note} />
 				</Menu>
 				<Column size={12} className="notes-editor" id="notes-editor">
-				
+
 				</Column>
 			</div>
 		</Fragment>
