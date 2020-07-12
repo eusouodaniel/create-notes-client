@@ -5,9 +5,16 @@
 	margin-left: 0px;
 	margin-right: 0px;
 	margin-top: 0px;
+	.list-item.is-active{
+		background-color: #e4e4e4;
+	}
 }
 
 .bm-menu{
 	background: white;
 	padding-top: 10px;
+}
+
+.list-item.is-active{
+	background-color: $custom-grey-light;
 }
