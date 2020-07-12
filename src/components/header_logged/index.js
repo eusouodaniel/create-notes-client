@@ -61,9 +61,9 @@ function HeaderLogged(props) {
 							</Dropdown.Trigger>
 							<Dropdown.Menu>
 								<Dropdown.Content>
-									<Dropdown.Item as="div">
+									{/* <Dropdown.Item as="div">
 										<Link to="/users/edit">Editar meu usuário</Link>
-									</Dropdown.Item>
+									</Dropdown.Item> */}
 									<Dropdown.Divider />
 									<Dropdown.Item as="div">
 										<a href="#" onClick={e => logOut()}>Sair</a>
