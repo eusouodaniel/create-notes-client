@@ -7,6 +7,9 @@ const NoteService = {
     create: () => Api.post("/notes", { 'title': 'Nova nota', 'body': 'Novo conteúdo' }, {
         headers: {'access-token': localStorage.getItem('token')}
     }),
+    delete: (id, params) => Api.put(`/notes/${id}`, params, {
+        headers: {'access-token': localStorage.getItem('token')}
+    }),
     delete: (id) => Api.delete(`/notes/${id}`, {
         headers: {'access-token': localStorage.getItem('token')}
     }),
