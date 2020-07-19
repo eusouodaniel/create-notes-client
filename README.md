@@ -1,5 +1,7 @@
 # Project notes - Frontend
 
+![Heroku](http://heroku-badge.herokuapp.com/?app=d-notes)
+
 ## How to run
 
 - Install libraries **npm install or yarn**
